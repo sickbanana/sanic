@@ -1,4 +1,4 @@
-# sanic
+# Sanic project
 Проект написан с помощью фреймворка sanic и sqlachemy[async]
 # Для запуска в Docker:
 
@@ -9,7 +9,7 @@ docker-compose up -d
 
 Для отправки запросов использовать http://localhost:8000
 
-# Для миграции в Docker:
+# Для запуска миграции:
 
 ```shell
 docker exec sanic-backend-1 alembic upgrade head
