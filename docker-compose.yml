@@ -1,0 +1,23 @@
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    ports:
+      - 5432:5432
+
+  backend:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_HOST=postgres
+    command: bash -c "alembic upgrade head"
+    ports:
+      - 8000:8000
+    depends_on:
+      - postgres
+    volumes:
+      - ./app:/app
